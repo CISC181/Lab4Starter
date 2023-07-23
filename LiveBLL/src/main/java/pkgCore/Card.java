@@ -5,20 +5,19 @@ import java.io.Serializable;
 import pkgEnum.eRank;
 import pkgEnum.eSuit;
 
-public class Card implements Comparable<Card>,  Serializable, Cloneable {
+public class Card implements Comparable<Card>, Serializable, Cloneable {
 
 	private static final long serialVersionUID = 1L;
 	private eSuit eSuitValue;
 	private eRank eRankValue;
 	public boolean isWild;
-	
-	public Card (eSuit _eSuitValue, eRank _eRankValue)
-	{
+
+	public Card(eSuit _eSuitValue, eRank _eRankValue) {
 		this.eSuitValue = _eSuitValue;
 		this.eRankValue = _eRankValue;
 		this.isWild = false;
 	}
-	
+
 	/**
 	 * @version Lab #1
 	 * @since Lab #1
@@ -62,18 +61,37 @@ public class Card implements Comparable<Card>,  Serializable, Cloneable {
 		return false;
 	}
 
+	/**
+	 * geteSuitValue - Get the Suit value
+	 * 
+	 * @version Lab #1
+	 * @since Lab #1
+	 * @return Suit Value
+	 */
 	public eSuit geteSuitValue() {
 		return eSuitValue;
 	}
 
+	/**
+	 * geteRankValue - Get the Rank value
+	 * 
+	 * @version Lab #1
+	 * @since Lab #1
+	 * @return Rank Value
+	 */
 	public eRank geteRankValue() {
 		return eRankValue;
 	}
 
+	/**
+	 * isWild - Get Wild value
+	 * 
+	 * @version Lab #1
+	 * @since Lab #1
+	 * @return Wild
+	 */
 	public boolean isWild() {
 		return isWild;
 	}
 
-
-	
 }
