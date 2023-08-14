@@ -8,16 +8,29 @@ import pkgEnum.eSuit;
 public class Card implements Comparable<Card>, Serializable, Cloneable {
 
 	private static final long serialVersionUID = 1L;
-	private eSuit eSuitValue;
-	private eRank eRankValue;
-	public boolean isWild;
 
+	//TODO: Add four attributes 
+	
+	/**
+	 * @version Lab #1
+	 * @since Lab #1
+	 * *
+	 * @param _eSuitValue
+	 * @param _eRankValue
+	 */
 	public Card(eSuit _eSuitValue, eRank _eRankValue) {
-		this.eSuitValue = _eSuitValue;
-		this.eRankValue = _eRankValue;
-		this.isWild = false;
 	}
 
+	/**
+	 * @version Lab #1
+	 * @since Lab #1
+	 * *
+	 * @param _eSuitValue
+	 * @param _eRankValue
+	 */	
+	public Card(eRank _eRankValue, eSuit _eSuitValue) {
+	}
+	
 	/**
 	 * @version Lab #1
 	 * @since Lab #1
@@ -27,7 +40,12 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	@Override
 	public int compareTo(Card o) {
 		Card c = (Card) o;
-		return c.geteRankValue().compareTo(this.geteRankValue());
+		
+		//TODO: Uncomment this after you add the attributes
+		//return c.geteRankValue().compareTo(this.geteRankValue());
+		
+		//TODO: Remove return 0 after you add the attributes
+		return 0;
 	}
 
 	/**
@@ -54,44 +72,17 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 		// typecast o to Complex so that we can compare data members
 		Card c = (Card) o;
 
+		//TODO: Uncomment this after you add the attributes
+		/*
 		if ((c.geteRankValue().equals(this.geteRankValue())) && (c.geteSuitValue().equals(this.geteSuitValue())))
 
 			return true;
-
+		 */
 		return false;
 	}
 
-	/**
-	 * geteSuitValue - Get the Suit value
-	 * 
-	 * @version Lab #1
-	 * @since Lab #1
-	 * @return Suit Value
-	 */
-	public eSuit geteSuitValue() {
-		return eSuitValue;
-	}
+	//TODO: Add getters for the new attributes
 
-	/**
-	 * geteRankValue - Get the Rank value
-	 * 
-	 * @version Lab #1
-	 * @since Lab #1
-	 * @return Rank Value
-	 */
-	public eRank geteRankValue() {
-		return eRankValue;
-	}
 
-	/**
-	 * isWild - Get Wild value
-	 * 
-	 * @version Lab #1
-	 * @since Lab #1
-	 * @return Wild
-	 */
-	public boolean isWild() {
-		return isWild;
-	}
 
 }
