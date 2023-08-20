@@ -34,7 +34,7 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	 *        substituted by any other card
 	 */
 	private boolean Wild;
-	
+
 	/**
 	 * @version Lab #3
 	 * @since Lab #3
@@ -42,7 +42,7 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	 *        Wild - signifies if the card is 'Wild' or not. If Wild, it can be
 	 *        substituted by any other card
 	 */
-	private short sCardNbr;	
+	private short sCardNbr;
 
 	/**
 	 * @version Lab #1
@@ -50,28 +50,27 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	 * @param _eSuitValue
 	 * @param _eRankValue
 	 */
-		
-		
-		public Card(eSuit _eSuitValue, eRank _eRankValue, short _sCardNbr) {
-			this(_eRankValue,_eSuitValue, _sCardNbr);
-			this.Wild = false;
-		}
 
-		/**
-		 * @version Lab #1
-		 * @since Lab #1
-		 * @param eSuit - Given suit of the Card
-		 * @param eRank - Given rank of the Card
-		 * 
-		 *              Create an instance of the Card class
-		 */
-		public Card(pkgEnum.eRank _eRankValue, pkgEnum.eSuit _eSuitValue , short _sCardNbr) {
-			super();
-			this.eSuitValue = _eSuitValue;
-			this.eRankValue = _eRankValue;
-			this.Wild = false;
-			this.sCardNbr = _sCardNbr;
-		}
+	public Card(eSuit _eSuitValue, eRank _eRankValue, short _sCardNbr) {
+		this(_eRankValue, _eSuitValue, _sCardNbr);
+		this.Wild = false;
+	}
+
+	/**
+	 * @version Lab #1
+	 * @since Lab #1
+	 * @param eSuit - Given suit of the Card
+	 * @param eRank - Given rank of the Card
+	 * 
+	 *              Create an instance of the Card class
+	 */
+	public Card(pkgEnum.eRank _eRankValue, pkgEnum.eSuit _eSuitValue, short _sCardNbr) {
+		super();
+		this.eSuitValue = _eSuitValue;
+		this.eRankValue = _eRankValue;
+		this.Wild = false;
+		this.sCardNbr = _sCardNbr;
+	}
 
 	/**
 	 * @version Lab #1
@@ -111,13 +110,11 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 		// typecast o to Complex so that we can compare data members
 		Card c = (Card) o;
 
-		// TODO: Uncomment this after you add the attributes
-		/*
-		 * if ((c.geteRankValue().equals(this.geteRankValue())) &&
-		 * (c.geteSuitValue().equals(this.geteSuitValue())))
-		 * 
-		 * return true;
-		 */
+
+		if ((c.geteRankValue().equals(this.geteRankValue())) && (c.geteSuitValue().equals(this.geteSuitValue())))
+
+			return true;
+
 		return false;
 	}
 
@@ -136,7 +133,5 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	public short getsCardNbr() {
 		return sCardNbr;
 	}
-
- 
 
 }

@@ -11,8 +11,8 @@ public class Deck {
 
 	/**
 	 * @author BRG
-	 * @version Lab #2
-	 * @since Lab #2
+	 * @version Lab #1
+	 * @since Lab #1
 	 * 
 	 *        cardsInDeck - attribute keeping track of the cards that are in the
 	 *        deck. The attribute is valued in the Constructor for the class, and
@@ -22,8 +22,8 @@ public class Deck {
 
 	/**
 	 * @author BRG
-	 * @version Lab #2
-	 * @since Lab #2
+	 * @version Lab #1
+	 * @since Lab #1
 	 * 
 	 *        Default no-arg constructor. Create a single deck of cards, make sure
 	 *        it's shuffled.

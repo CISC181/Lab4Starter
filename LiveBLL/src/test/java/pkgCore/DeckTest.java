@@ -2,15 +2,73 @@ package pkgCore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collections;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import pkgEnum.eRank;
-import pkgEnum.eSuit;
 
 public class DeckTest {
 
-	//TODO: Add tests that ensure deck is built correctly and is random
+	/**
+	 * @author BRG
+	 * @version Lab #1
+	 * @since Lab #1
+	 * 
+	 *        Deck_Create_Test - Test creating a deck
+	 */
+	@Test
+	public void Deck_Create_Test() {
+		Deck d = new Deck();
+		ArrayList<Card> cards = this.getCards(d);
+		assertEquals(52, cards.size());
+		assertEquals(52, d.getiDeckCount());
+
+			Card c = d.Draw();
+		cards = this.getCards(d);
+		assertEquals(51, cards.size());
+	}
+
+	/**
+	 * @author BRG
+	 * @version Lab #1
+	 * @since Lab #1
+	 * 
+	 *        getCards - getCardsInDeck is private. It must be tested.
+	 */
+	private ArrayList<Card> getCards(Deck d) {
+		ArrayList<Card> cards = new ArrayList<Card>();
+		try {
+
+			// Consume the Deck class
+			Class<?> c = Class.forName("pkgCore.Deck");
+			// Find the getCardsInDeck method
+			Method mGetCardsInDeck = c.getDeclaredMethod("getCardsInDeck", null);
+			// Set the method accessible
+			mGetCardsInDeck.setAccessible(true);
+			// Invoke the method, return the results
+			cards = (ArrayList<Card>) mGetCardsInDeck.invoke(d, null);
+
+		} catch (ClassNotFoundException x) {
+			x.printStackTrace();
+		} catch (IllegalAccessException x) {
+			x.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+
+		// Return the results
+		return cards;
+	}
+
+
 }
