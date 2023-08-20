@@ -44,8 +44,15 @@ public class Deck {
 	 */
 	public Deck(int iNbrOfDecks) {
 
-		//TODO: Build decks of cards.  If 1 is passed in, build a deck with 52 cards.  If 2 is passed in, build two decks, total 104 cards
-
+		short iCardNbr = 0;
+		for (int a = 0; a < iNbrOfDecks; a++) {
+			for (eSuit eSuit : EnumSet.range(eSuit.HEARTS, eSuit.DIAMONDS)) {
+				for (eRank eRank : EnumSet.range(eRank.TWO,  eRank.ACE)) {
+					cardsInDeck.add(new Card(eSuit, eRank, ++iCardNbr));
+				}
+			}
+		}
+		Collections.shuffle(cardsInDeck);
 	}
 	
 	/**

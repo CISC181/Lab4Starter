@@ -22,13 +22,13 @@ public class CardTest {
 	
 	@Test
 	public void Card_Create_Test() {
-		Card c = new Card(eSuit.CLUBS, eRank.EIGHT);
+		Card c = new Card(eSuit.CLUBS, eRank.EIGHT, (short) 1);
 		assertNotNull(c);
 		
-		//TODO: Uncomment after attributes are added
-		//assertEquals(eSuit.CLUBS, c.geteSuitValue());
-		//assertEquals(eRank.EIGHT, c.geteRankValue());
-		//assertFalse(c.isWild());
+		
+		assertEquals(eSuit.CLUBS, c.geteSuitValue());
+		assertEquals(eRank.EIGHT, c.geteRankValue());
+		assertFalse(c.isWild());
 	}
 
 	/**
@@ -40,12 +40,12 @@ public class CardTest {
 	 */
 	@Test
 	public void Card_Equal_Test() {
-		Card c1 = new Card(eSuit.HEARTS, eRank.TWO);
-		Card c2 = new Card(eSuit.HEARTS, eRank.TWO);
+		Card c1 = new Card(eSuit.HEARTS, eRank.TWO, (short) 1);
+		Card c2 = new Card(eSuit.HEARTS, eRank.TWO, (short) 2);
 
 		assertTrue(c1.equals(c2));
 
-		Card c3 = new Card(eSuit.HEARTS, eRank.THREE);
+		Card c3 = new Card(eSuit.HEARTS, eRank.THREE, (short) 3);
 		assertFalse(c1.equals(c3));
 	}
 
@@ -60,9 +60,9 @@ public class CardTest {
 	public void Card_Sort_Test() {
 
 		ArrayList<Card> cards = new ArrayList<Card>();
-		Card c1 = new Card(eSuit.CLUBS, eRank.TWO);
-		Card c2 = new Card(eSuit.CLUBS, eRank.EIGHT);
-		Card c3 = new Card(eSuit.DIAMONDS, eRank.SIX);
+		Card c1 = new Card(eSuit.CLUBS, eRank.TWO,(short) 1);
+		Card c2 = new Card(eSuit.CLUBS, eRank.EIGHT,(short) 1);
+		Card c3 = new Card(eSuit.DIAMONDS, eRank.SIX,(short) 1);
 
 		cards.add(c1);
 		cards.add(c2);
@@ -70,10 +70,10 @@ public class CardTest {
 
 		Collections.sort(cards);
 
-		//TODO: Uncomment after attributes are added
-		//assertEquals(cards.get(0).geteRankValue(), eRank.EIGHT);
-		//assertEquals(cards.get(1).geteRankValue(), eRank.SIX);
-		//assertEquals(cards.get(2).geteRankValue(), eRank.TWO);
+		
+		assertEquals(cards.get(0).geteRankValue(), eRank.EIGHT);
+		assertEquals(cards.get(1).geteRankValue(), eRank.SIX);
+		assertEquals(cards.get(2).geteRankValue(), eRank.TWO);
 	}
 
 }
