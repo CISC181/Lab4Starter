@@ -147,6 +147,7 @@ public class HandPoker extends Hand implements Comparable {
 		//TODO: Implement method
 		
 		return bIsRoyalFlush;
+		
 	}
 
 	private boolean isStraightFlush() {
