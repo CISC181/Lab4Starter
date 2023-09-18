@@ -42,7 +42,7 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	 *        Wild - signifies if the card is 'Wild' or not. If Wild, it can be
 	 *        substituted by any other card
 	 */
-	private short sCardNbr;
+	private int sCardNbr;
 
 	/**
 	 * @version Lab #1
@@ -51,7 +51,7 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	 * @param _eRankValue
 	 */
 
-	public Card(eSuit _eSuitValue, eRank _eRankValue, short _sCardNbr) {
+	public Card(eSuit _eSuitValue, eRank _eRankValue, int _sCardNbr) {
 		this(_eRankValue, _eSuitValue, _sCardNbr);
 		this.Wild = false;
 	}
@@ -64,7 +64,7 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 	 * 
 	 *              Create an instance of the Card class
 	 */
-	public Card(pkgEnum.eRank _eRankValue, pkgEnum.eSuit _eSuitValue, short _sCardNbr) {
+	public Card(pkgEnum.eRank _eRankValue, pkgEnum.eSuit _eSuitValue, int _sCardNbr) {
 		super();
 		this.eSuitValue = _eSuitValue;
 		this.eRankValue = _eRankValue;
@@ -130,7 +130,7 @@ public class Card implements Comparable<Card>, Serializable, Cloneable {
 		return Wild;
 	}
 
-	public short getsCardNbr() {
+	public int getsCardNbr() {
 		return sCardNbr;
 	}
 
