@@ -16,12 +16,11 @@ import pkgException.HandException;
 
 public class HandPoker extends Hand implements Comparable {
 
-	
 	public HandPoker() {
-		
+
 		this.setHS(new HandScorePoker());
 	}
-	
+
 	private ArrayList<CardRankCount> CRC = null;
 
 	private HandScorePoker HSP = new HandScorePoker();
@@ -49,9 +48,8 @@ public class HandPoker extends Hand implements Comparable {
 		Frequency();
 
 		// Score the hand using Java Reflections
-		var HSP = ScoreHandReflections(); 
-		this.HSP = HSP;
-//		this.setHS(HSP);
+
+		this.HSP = ScoreHandReflections();
 		return HSP;
 	}
 
@@ -141,20 +139,6 @@ public class HandPoker extends Hand implements Comparable {
 
 		return HSP;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	/**
 	 * @author BRG
@@ -167,7 +151,8 @@ public class HandPoker extends Hand implements Comparable {
 
 		boolean bIsRoyalFlush = false;
 		if ((this.getCards().get(eCardNo.FIRST.getiCardNo()).geteRankValue() == eRank.ACE)
-				&& (this.getCards().get(eCardNo.SECOND.getiCardNo()).geteRankValue() == eRank.KING) && isStraightFlush()) {
+				&& (this.getCards().get(eCardNo.SECOND.getiCardNo()).geteRankValue() == eRank.KING)
+				&& isStraightFlush()) {
 			bIsRoyalFlush = true;
 			HandScorePoker HSP = (HandScorePoker) this.getHS();
 			HSP.seteHandStrength(eHandStrength.RoyalFlush);
@@ -244,8 +229,7 @@ public class HandPoker extends Hand implements Comparable {
 			HSP.setHiCard(this.getCards().get(0));
 			HSP.setLoCard(null);
 			ArrayList<Card> kickers = new ArrayList<Card>();
-			for (int i = 1; i<super.getCards().size(); i++)
-			{
+			for (int i = 1; i < super.getCards().size(); i++) {
 				kickers.add(super.getCards().get(i));
 			}
 			HSP.setKickers(kickers);
@@ -261,7 +245,8 @@ public class HandPoker extends Hand implements Comparable {
 		boolean bisStraight = false;
 		int iDiff = 0;
 		int i = 0;
-		if ((this.getCards().get(0).geteRankValue() == eRank.ACE) && (this.getCards().get(1).geteRankValue() == eRank.FIVE)) {
+		if ((this.getCards().get(0).geteRankValue() == eRank.ACE)
+				&& (this.getCards().get(1).geteRankValue() == eRank.FIVE)) {
 			i = 1;
 		}
 		for (; i < this.getCards().size() - 1; i++) {
@@ -352,8 +337,6 @@ public class HandPoker extends Hand implements Comparable {
 		return bisHighCard;
 	}
 
-	
-
 	private int GetCRCSize() {
 		return CRC.size();
 	}
@@ -375,43 +358,38 @@ public class HandPoker extends Hand implements Comparable {
 		return kickers;
 	}
 
-	
 	/**
 	 * equals - return 'true' if the cards are the same.
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		
-		HandPoker hp = (HandPoker)obj;
+
+		HandPoker hp = (HandPoker) obj;
 		ArrayList<Card> PassedCards = hp.getCards();
 		ArrayList<Card> ThisCards = this.getCards();
-		
+
 		boolean isEqual = PassedCards.equals(ThisCards);
-		
+
 		return isEqual;
-		
+
 	}
 
-    // External Comparator
-    public static Comparator<HandPoker> hpComparator = new Comparator<HandPoker>() {
-        @Override
-        public int compare(HandPoker hp1, HandPoker hp2) {        	
-        	return hp1.compareTo(hp2);
-        }
-    };
-    
-    
+	// External Comparator
+	public static Comparator<HandPoker> hpComparator = new Comparator<HandPoker>() {
+		@Override
+		public int compare(HandPoker hp1, HandPoker hp2) {
+			return hp1.compareTo(hp2);
+		}
+	};
+
 	/**
 	 * @author BRG
 	 * @version Lab #3
 	 * @since Lab #3
 	 * 
-	 * compareTo - This is the default sort for HandPoker.  Sorted by...
+	 *        compareTo - This is the default sort for HandPoker. Sorted by...
 	 * 
-	 * HandStrength
-	 * HiHand
-	 * LoHand
-	 * Kickers
+	 *        HandStrength HiHand LoHand Kickers
 	 * 
 	 * 
 	 * 
@@ -429,17 +407,21 @@ public class HandPoker extends Hand implements Comparable {
 			return PassedHSP.geteHandStrength().getHandStrength() - ThisHSP.geteHandStrength().getHandStrength();
 
 		// Then Sort on High Card
-		if (PassedHSP.getHiCard().geteRankValue().getiRankNbr() - ThisHSP.getHiCard().geteRankValue().getiRankNbr() != 0)
-			return PassedHSP.getHiCard().geteRankValue().getiRankNbr() - ThisHSP.getHiCard().geteRankValue().getiRankNbr();
+		if (PassedHSP.getHiCard().geteRankValue().getiRankNbr()
+				- ThisHSP.getHiCard().geteRankValue().getiRankNbr() != 0)
+			return PassedHSP.getHiCard().geteRankValue().getiRankNbr()
+					- ThisHSP.getHiCard().geteRankValue().getiRankNbr();
 
 		// Then Sort on Low Card
 		if ((PassedHSP.getLoCard() != null) && (ThisHSP.getLoCard() != null)) {
-			if (PassedHSP.getLoCard().geteRankValue().getiRankNbr() - ThisHSP.getLoCard().geteRankValue().getiRankNbr() != 0) {
-				return PassedHSP.getLoCard().geteRankValue().getiRankNbr() - ThisHSP.getLoCard().geteRankValue().getiRankNbr();
+			if (PassedHSP.getLoCard().geteRankValue().getiRankNbr()
+					- ThisHSP.getLoCard().geteRankValue().getiRankNbr() != 0) {
+				return PassedHSP.getLoCard().geteRankValue().getiRankNbr()
+						- ThisHSP.getLoCard().geteRankValue().getiRankNbr();
 			}
 		}
 
-		//	Then Sort by kickers. 
+		// Then Sort by kickers.
 		for (int k = 0; k < 4; k++) {
 			if ((PassedHSP.getKickers() != null) && (ThisHSP.getKickers() != null)) {
 				if ((PassedHSP.getKickers().size() > k) && (ThisHSP.getKickers().size() > k)) {

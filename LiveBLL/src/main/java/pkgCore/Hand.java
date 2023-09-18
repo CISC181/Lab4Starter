@@ -63,8 +63,8 @@ public abstract class Hand {
 
 	/**
 	 * @author BRG
-	 * @version Lab #1
-	 * @since Lab #1
+	 * @version Lab #2
+	 * @since Lab #2
 	 * @return This method should return the HS (HandScore) attribute
 	 */
 	protected HandScore getHS() {
@@ -73,8 +73,8 @@ public abstract class Hand {
 
 	/**
 	 * @author BRG
-	 * @version Lab #1
-	 * @since Lab #1
+	 * @version Lab #2
+	 * @since Lab #2
 	 * @param hS - given HandScore
 	 * 
 	 *           This method will set the HandScore for the Hand.
@@ -89,8 +89,8 @@ public abstract class Hand {
 	 * evaluated.
 	 * 
 	 * @author BRG
-	 * @version Lab #1
-	 * @since Lab #1
+	 * @version Lab #2
+	 * @since Lab #2
 	 * @return HandScore calculated for given Hand
 	 * @throws HandException
 	 */
