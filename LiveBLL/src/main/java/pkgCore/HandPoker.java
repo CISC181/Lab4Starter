@@ -59,6 +59,7 @@ public class HandPoker extends Hand implements Comparable {
 			if (iCnt > 0) {
 				iPos = FindCardRank(eRank);
 				CRC.add(new CardRankCount(eRank, iCnt, iPos));
+				
 			}
 		}
 		Collections.sort(CRC);
@@ -160,7 +161,18 @@ public class HandPoker extends Hand implements Comparable {
 	private boolean isFourOfAKind() {
 		boolean bisFourOfAKind = false;
 
-		//TODO: Implement method
+		if ((GetCRCSize() == eRowCount.TWO.getiRowCountItems())
+				&& ((GetCRCCount(eRow.ONE.ordinal()) == 4) 
+						&& (GetCRCCount(eRow.TWO.ordinal()) == 1))) {
+			bisFourOfAKind = true;
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.FourOfAKind);
+			HSP.setHiCard(this.getCards()
+					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
+		}
 		return bisFourOfAKind;
 	}
 
