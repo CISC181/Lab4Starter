@@ -205,7 +205,7 @@ public class HandPoker extends Hand implements Comparable {
 			HSP.setKickers(null);
 			this.setHS(HSP);
 		}
-		//: Implement method
+		//TODO: Implement method
 
 		return bisFullHouse;
 
