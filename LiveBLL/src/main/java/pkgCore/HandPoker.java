@@ -147,6 +147,12 @@ public class HandPoker extends Hand implements Comparable {
 		boolean bIsRoyalFlush = false;
 		//TODO: Implement method
 		
+		if(this.getCards().get(0).geteRankValue() == eRank.ACE && isStraightFlush()) {
+			{
+				bIsRoyalFlush = true;
+				
+			}
+		}
 		return bIsRoyalFlush;
 		
 	}
@@ -154,6 +160,10 @@ public class HandPoker extends Hand implements Comparable {
 	private boolean isStraightFlush() {
 		boolean bisStraightFlush = false;
 
+		if(isFlush() && isStraight())
+		{
+			
+		}
 		//TODO: Implement method
 		return bisStraightFlush;
 	}
@@ -163,7 +173,8 @@ public class HandPoker extends Hand implements Comparable {
 
 		if ((GetCRCSize() == eRowCount.TWO.getiRowCountItems())
 				&& ((GetCRCCount(eRow.ONE.ordinal()) == 4) 
-						&& (GetCRCCount(eRow.TWO.ordinal()) == 1))) {
+						&& (GetCRCCount(eRow.TWO.ordinal()) == 1))) 
+		{
 			bisFourOfAKind = true;
 			HandScorePoker HSP = (HandScorePoker) this.getHS();
 			HSP.seteHandStrength(eHandStrength.FourOfAKind);
@@ -187,15 +198,61 @@ public class HandPoker extends Hand implements Comparable {
 
 	private boolean isFlush() {
 		boolean bisFlush = false;
-
+		
+		
+		for(var S: eSuit.values())
+		{
+			for(var C: this.getCards())
+			{
+				if(C.geteSuitValue() == S)
+				{
+					iCnt++;
+				}
+			}
+			if(iCnt == this.getCards().size()) {
+				bigFlush = true;
+				break;
+			}
+			if(iCnt > 0) {
+				break;
+		}
+		if(bisFlush)
+		{
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.Flush);
+			HSP.setHiCard(this.getCards()
+					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
+			}
+		}
 		//TODO: Implement method
 
 		return bisFlush;
 	}
 
 	private boolean isStraight() {
-		boolean bisStraight = false;
+		boolean bisStraight = true;
 		//TODO: Implement method
+		int i = 0
+		
+		if(this.getCards().get(0).geteRankValue() == eRank.ACE) {
+			if (this.getCards().get(1).geteRankValue() == eRank.FIVE)
+		}
+		{
+			int i = 1
+		}
+			
+		for(int i = 0; i<this.getCards().size()-1; i++)
+		{
+			if(this.getCards(.get(i).geteRankValue().getiRankNbr() == 
+					this.getCards(.get(i+1).geteRankValue().getiRankNbr()+1))
+		}
+		{
+		else
+			bigStraight == false;
+		}
 		return bisStraight;
 	}
 
