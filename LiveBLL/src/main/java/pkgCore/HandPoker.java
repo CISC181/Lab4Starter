@@ -144,11 +144,17 @@ public class HandPoker extends Hand implements Comparable {
 	 */
 	private boolean isRoyalFlush() {
 
-		boolean bIsRoyalFlush = false;
-		//TODO: Implement method
+		boolean bIsRoyalFlush = false;	
 		
 		if ((this.getCards().get(0).geteRankValue() == eRank.ACE) && (isStraightFlush())) {
 			bIsRoyalFlush = true;
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.RoyalFlush);
+			HSP.setHiCard(this.getCards()
+					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setLoCard(null);
+			HSP.setKickers(null);
+			this.setHS(HSP);
 		}
 		
 		return bIsRoyalFlush;
@@ -160,9 +166,14 @@ public class HandPoker extends Hand implements Comparable {
 		
 		if (isFlush() && isStraight()) {
 			bisStraightFlush = true;
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.StraightFlush);
+			HSP.setHiCard(this.getCards()
+					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setLoCard(null);
+			HSP.setKickers(null);
+			this.setHS(HSP);
 		}
-		
-		//TODO: Implement method
 		return bisStraightFlush;
 	}
 
@@ -205,7 +216,6 @@ public class HandPoker extends Hand implements Comparable {
 			HSP.setKickers(null);
 			this.setHS(HSP);
 		}
-		//TODO: Implement method
 
 		return bisFullHouse;
 
@@ -284,21 +294,67 @@ public class HandPoker extends Hand implements Comparable {
 	private boolean isThreeOfAKind() {
 		boolean bisThreeOfAKind = false;
 
-		//TODO: Implement method
+		if ((GetCRCSize() == eRowCount.THREE.getiRowCountItems())
+				&& ((GetCRCCount(eRow.ONE.ordinal()) == 3) 
+						&& (GetCRCCount(eRow.TWO.ordinal()) == 1)) && (GetCRCCount(eRow.THREE.ordinal()) == 1)) 
+			
+
+		{
+			bisThreeOfAKind = true;
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.ThreeOfAKind);
+			HSP.setHiCard(this.getCards()
+					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
+		}
+
 		return bisThreeOfAKind;
 	}
 
 	private boolean isTwoPair() {
 		boolean bisTwoPair = false;
 
-		//TODO: Implement method
+		if ((GetCRCSize() == eRowCount.THREE.getiRowCountItems())
+				&& ((GetCRCCount(eRow.ONE.ordinal()) == 2) 
+						&& (GetCRCCount(eRow.TWO.ordinal()) == 2)) && (GetCRCCount(eRow.THREE.ordinal()) == 1)) 
+			
+
+		{
+			bisTwoPair = true;
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.TwoPair);
+			HSP.setHiCard(this.getCards()
+					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setLoCard(this.getCards()
+					.get(CRC.get(eRow.TWO.ordinal()).getiCardPosition()));
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
+		}
 		return bisTwoPair;
 	}
 
 	private boolean isPair() {
 
 		boolean bisPair = false;
-		//TODO: Implement method
+
+		if ((GetCRCSize() == eRowCount.FOUR.getiRowCountItems())
+				&& ((GetCRCCount(eRow.ONE.ordinal()) == 2) 
+						&& (GetCRCCount(eRow.TWO.ordinal()) == 1)) && (GetCRCCount(eRow.THREE.ordinal()) == 1) 
+				&& (GetCRCCount(eRow.FOUR.ordinal()) == 1)) 
+			
+
+		{
+			bisPair = true;
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.Pair);
+			HSP.setHiCard(this.getCards()
+					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
+		}
 
 		return bisPair;
 	}
