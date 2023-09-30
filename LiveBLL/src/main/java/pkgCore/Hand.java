@@ -12,7 +12,23 @@ public abstract class Hand {
 	private UUID HandID;
 	private ArrayList<Card> cards;
 	private HandScore HS;
-
+	
+	/**
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * GP - This is the GamePlay that owns the hand.  
+	 */
+	private GamePlay GP = null;
+	
+	/**
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * 
+	 */
+	private Player player = null; 
+	
 	/**
 	 * @author BRG
 	 * @version Lab #2
@@ -27,7 +43,22 @@ public abstract class Hand {
 		cards = new ArrayList<Card>();
 	}
 
-
+	/**
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * 
+	 *        Hand one-arg constructor.
+	 * 
+	 *        This constructor passes in the instance of GamePlay
+	 */	
+	public Hand(Player p, GamePlay gp)
+	{
+		this();
+		this.GP = gp;
+		this.player = p;
+	}
+	
 	/**
 	 * @author BRG
 	 * @version Lab #2

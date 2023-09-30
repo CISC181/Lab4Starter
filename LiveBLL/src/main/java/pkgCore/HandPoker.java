@@ -17,10 +17,23 @@ import pkgException.HandException;
 public class HandPoker extends Hand implements Comparable {
 
 	public HandPoker() {
-
 		this.setHS(new HandScorePoker());
 	}
 
+	/**
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * 
+	 *        HandPoker - Create an instance of GamePoker with a link back to
+	 *        GamePoker that's handling it.
+	 * @param GP
+	 */
+	public HandPoker(Player p, GamePlay GP) {
+		super(p, GP);
+		this.setHS(new HandScorePoker());
+	}
+	
 	private ArrayList<CardRankCount> CRC = null;
 
 	private HandScorePoker HSP = new HandScorePoker();
@@ -137,8 +150,8 @@ public class HandPoker extends Hand implements Comparable {
 
 	/**
 	 * @author BRG
-	 * @version Lab #1
-	 * @since Lab #1
+	 * @version Lab #2
+	 * @since Lab #2
 	 * @return 'true' if Hand is a Royal Flush
 	 * 
 	 */
@@ -160,7 +173,13 @@ public class HandPoker extends Hand implements Comparable {
 		return bIsRoyalFlush;
 		
 	}
-
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Straight Flush
+	 * 
+	 */
 	private boolean isStraightFlush() {
 		boolean bisStraightFlush = false;
 		
@@ -177,6 +196,13 @@ public class HandPoker extends Hand implements Comparable {
 		return bisStraightFlush;
 	}
 
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Four of a Kind
+	 * 
+	 */
 	private boolean isFourOfAKind() {
 		boolean bisFourOfAKind = false;
 
@@ -197,6 +223,13 @@ public class HandPoker extends Hand implements Comparable {
 		return bisFourOfAKind;
 	}
 
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Full House
+	 * 
+	 */	
 	private boolean isFullHouse() {
 		boolean bisFullHouse = false;
 		
@@ -220,7 +253,13 @@ public class HandPoker extends Hand implements Comparable {
 		return bisFullHouse;
 
 	}
-
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Flush
+	 * 
+	 */	
 	private boolean isFlush() {
 		boolean bisFlush = false;
 		
@@ -255,6 +294,13 @@ public class HandPoker extends Hand implements Comparable {
 		return bisFlush;
 	}
 
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Straight
+	 * 
+	 */	
 	private boolean isStraight() {
 		boolean bisStraight = true;
 		int i = 0;
@@ -291,6 +337,13 @@ public class HandPoker extends Hand implements Comparable {
 		return bisStraight;
 	}
 
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Three of a Kind
+	 * 
+	 */
 	private boolean isThreeOfAKind() {
 		boolean bisThreeOfAKind = false;
 
@@ -312,7 +365,13 @@ public class HandPoker extends Hand implements Comparable {
 
 		return bisThreeOfAKind;
 	}
-
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Two Pair
+	 * 
+	 */
 	private boolean isTwoPair() {
 		boolean bisTwoPair = false;
 
@@ -334,7 +393,13 @@ public class HandPoker extends Hand implements Comparable {
 		}
 		return bisTwoPair;
 	}
-
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a Pair
+	 * 
+	 */
 	private boolean isPair() {
 
 		boolean bisPair = false;
@@ -359,6 +424,13 @@ public class HandPoker extends Hand implements Comparable {
 		return bisPair;
 	}
 
+	/**
+	 * @author BRG
+	 * @version Lab #2
+	 * @since Lab #2
+	 * @return 'true' if Hand is a High Card
+	 * 
+	 */
 	private boolean isHighCard() {
 		boolean bisHighCard = true;
 
