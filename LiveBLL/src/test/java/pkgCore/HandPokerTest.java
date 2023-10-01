@@ -13,6 +13,7 @@ import pkgEnum.eHandStrength;
 import pkgEnum.eRank;
 import pkgEnum.eSuit;
 import pkgException.HandException;
+import pkgHelper.HandHelper;
 
 
 public class HandPokerTest {
@@ -27,6 +28,10 @@ public class HandPokerTest {
 		cards.add(new Card(eSuit.DIAMONDS, eRank.JACK,1));
 		
 		HandPoker HP = new HandPoker();
+		
+		HP = HandHelper.setHandPoker(HP, cards);
+		
+		
 		HP.setCards(cards);
 		
 		try {

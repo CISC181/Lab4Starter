@@ -17,7 +17,6 @@ import pkgException.HandException;
 public class GamePlay { 
 
 	private Rule Rle;
-	//private ArrayList<Player> GamePlayers = new ArrayList<Player>();
 	private HashMap<UUID, Player> GamePlayers = new HashMap<UUID, Player>();
 	private HashMap<UUID, HandPoker> GameHand = new HashMap<UUID, HandPoker>();
 	private ArrayList<Card> CommonCards = new ArrayList<Card>();
@@ -82,6 +81,12 @@ public class GamePlay {
 	private GamePlay setCommonCards(ArrayList<Card> commonCards) {
 		CommonCards.clear();
 		CommonCards = (ArrayList<Card>) commonCards.clone();
+		return this;
+	}
+	
+	private GamePlay setPlayerHand(UUID PlayerID, HandPoker HP)
+	{
+		this.GameHand.put(PlayerID, HP);		
 		return this;
 	}
 
