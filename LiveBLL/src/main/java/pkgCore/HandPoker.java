@@ -5,6 +5,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
+
+import org.apache.commons.math3.util.CombinatoricsUtils;
 
 import pkgEnum.eCardNo;
 import pkgEnum.eHandStrength;
@@ -45,6 +48,7 @@ public class HandPoker extends Hand implements Comparable {
 	protected ArrayList<CardRankCount> getCRC() {
 		return CRC;
 	}
+	
 
 	@Override
 	public HandScore ScoreHand() throws HandException {

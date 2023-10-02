@@ -61,6 +61,17 @@ public abstract class Hand {
 	
 	/**
 	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * 
+	 *        getGP - return current GamePlay
+	 */	
+	protected GamePlay getGP() {
+		return GP;
+	}
+	
+	/**
+	 * @author BRG
 	 * @version Lab #2
 	 * @since Lab #2
 	 * 
