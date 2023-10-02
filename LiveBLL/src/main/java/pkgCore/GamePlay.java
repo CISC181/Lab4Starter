@@ -20,7 +20,6 @@ public class GamePlay {
 	private HashMap<UUID, Player> GamePlayers = new HashMap<UUID, Player>();
 	private HashMap<UUID, HandPoker> GameHand = new HashMap<UUID, HandPoker>();
 	private ArrayList<Card> CommonCards = new ArrayList<Card>();
-
 	private Deck GameDeck;
 
 	/**
@@ -40,13 +39,24 @@ public class GamePlay {
 		GameDeck = new Deck();
 	}
 
+	/**
+	 * Draw - Draw a card from the game's deck and assign it to a given player
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 *  
+	 * @param p
+	 * @param CD
+	 * @throws DeckException
+	 * @throws HandException
+	 */
 	public void Draw(Player p, CardDraw CD) throws DeckException, HandException {
 
 		for (int crdCnt = 0; crdCnt < CD.getCardCount().getCardCount(); crdCnt++) {
 			if (CD.getCardDestination() == eCardDestination.COMMON) {
 				CommonCards.add(GameDeck.Draw());
-			} else {
-				GameHand.get(p.getPlayerID()).Draw(GameDeck);
+			} else {			
+				GameHand.get(p.getPlayerID()).Draw(GameDeck).ScoreHand();
 			}
 		}
 	}
@@ -84,8 +94,23 @@ public class GamePlay {
 		return this;
 	}
 	
+	/**
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * 
+	 * setPlayerHand - Only used for unit testing.
+	 * 
+	 * @return - current instance of GamePlay
+	 */	
 	private GamePlay setPlayerHand(UUID PlayerID, HandPoker HP)
 	{
+		try {
+			HP.ScoreHand();
+		} catch (HandException e) {
+			// There's no way this can fail, you're sending in cards.
+			e.printStackTrace();
+		}
 		this.GameHand.put(PlayerID, HP);		
 		return this;
 	}
@@ -153,5 +178,54 @@ public class GamePlay {
 			Draw(value, this.Rle.getCardDraw(eDrawCount.FIRST)); 
         }
 	}
+	
+	/**
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * 
+	 * WinningHand - Will return the Winning Hand
+	 * 
+	 * @return - HandPoker
+	 */
+	public HandPoker WinningHand()
+	{
+		ArrayList<HandPoker> GameHands = new ArrayList<HandPoker>();
+		
+		for (Map.Entry<UUID,HandPoker> mapElement : this.GameHand.entrySet()) {
+			GameHands.add(mapElement.getValue());
+		}
+		GameHands.sort(HandPoker.hpComparator);
+		
+		return GameHands.get(0);
+	}
+	
+	/**
+	 * @author BRG
+	 * @version Lab #3
+	 * @since Lab #3
+	 * 
+	 * WinningPlayer - Will return the Winning Player
+	 * 
+	 * @return Player
+	 */
+	public ArrayList<Player> WinningPlayer()
+	{
+		HandPoker hp = this.WinningHand();
+		HandScorePoker HSP = hp.getHSP();
+		ArrayList<Player> WinningPlayers = new ArrayList<Player>();
+		
+		for (Map.Entry<UUID,HandPoker> mapElement : this.GameHand.entrySet()) {
+			HandPoker hpItem = mapElement.getValue();			
+			if (hpItem.getHSP().equals(HSP))
+			{
+				WinningPlayers.add( GamePlayers.get(mapElement.getKey()));
+			}	
+
+		}
+		return WinningPlayers;
+	}
+	
+	
 
 }

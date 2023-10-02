@@ -124,6 +124,12 @@ public class HandScorePoker extends HandScore {
 		}
 		for (int i = 0; i < 4; i++) {
 
+			if (PassedHSP.getKickers().size()-1 > i)
+				return true;
+			if (PassedHSP.getKickers().size()-1 > i)
+				return true;
+			
+			
 			if ((PassedHSP.getKickers().get(i) != null) && (ThisHSP.getKickers().get(i) != null)
 					&& (PassedHSP.getKickers().get(i).geteRankValue().getiRankNbr() != 
 					ThisHSP.getKickers().get(i).geteRankValue().getiRankNbr())) {
