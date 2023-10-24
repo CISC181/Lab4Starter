@@ -146,6 +146,8 @@ public abstract class Hand {
 		return HandID;
 	}
 
+	//TODO: Add a getter for Player... GetPlayer...
+
 	
 	
 	
