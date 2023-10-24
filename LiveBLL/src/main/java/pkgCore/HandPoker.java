@@ -64,6 +64,29 @@ public class HandPoker extends Hand implements Comparable {
 		return HSP;
 	}
 
+		/**
+	 * GetPossibleHands - Generate the hands possible depending on game.
+	 * Texas Hold'em will yield 21 hands, Omaha 60 hands.
+	 * @version Lab #4
+	 * @since Lab #4
+	 * @return
+	 * @throws HandException
+	 */
+	public ArrayList<HandPoker> GetPossibleHands(GamePlay gp) throws HandException {
+		
+		ArrayList<HandPoker> CombinationHands = new ArrayList<HandPoker>();
+
+		//TODO: Figure out the possible combinations of hands based on the players cards
+		//		and the common cards.
+		
+		if (gp.getRle().getPossibleHandCombinations() != CombinationHands.size())
+		{
+			throw new HandException(this);
+		}
+		return CombinationHands;
+
+	}
+
 	private void Frequency() {
 
 		CRC = new ArrayList<CardRankCount>();
